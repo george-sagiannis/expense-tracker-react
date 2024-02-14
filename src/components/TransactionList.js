@@ -12,8 +12,6 @@ const TransactionList = () => {
   //here we can pull everything from the global state using context hook
   const { transactions } = useContext(GlobalContext); // transactions is an array so we need to loop through it or map it throught it rather and the output each transaction
 
-  console.log(useContext(GlobalContext));
-
   //say for each transaction with map we want to output for now just this list item all the li will put in parenthesis 
   //then instead of li we add the Transaction new component that nees to know which specific transaction to render
   //so we nned to pass it as a prop
