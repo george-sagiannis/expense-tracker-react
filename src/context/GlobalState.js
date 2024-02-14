@@ -28,12 +28,26 @@ export const GlobalProvider = ({ children }) => {
     
     //here we need access to state and dispatch whenever we want to call a reducer action we need to use this dispatch so this comes from reducer
     //The state is initialized with the initialState object and the AppReducer function is used to update the state
-    const [state, dipatch] = useReducer(AppReducer, intialState);
+    const [state, dispatch] = useReducer(AppReducer, intialState);
 
+
+    //here we will have our actions that are going to make calls to our reducer
+
+    //we pass id so we can know which one to delete
+    //we can dispatch to our reducer an object and we are gonna have a type which will be string
+    //then needs a a payload so basically any data we want to send to the object it is going to be the ID
+    function deleteTransaction(id) {
+        dispatch ({
+            type: 'DELETE_TRANSACTION',
+            payload: id
+        });
+    }
 
     //returns the GlobalContext.Provider component, which wraps its child components. It provides the transactions array from the state as the value of the context
     return (<GlobalContext.Provider value={{
-        transactions: state.transactions
+        transactions: state.transactions,
+
+        deleteTransaction
     }}>
         {children}
     </GlobalContext.Provider>)
